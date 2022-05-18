@@ -80,19 +80,21 @@ class HomePage extends StatelessWidget {
             } else if (data.hasData) {
               var resto = data.data as List<RestoModel>;
               //ListView untuk menampilkan data dari json
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        header(),
-                      ],
-                    );
-                  }
-                  return RestoTile(resto: resto[index]);
-                },
-                itemCount: resto.length,
+              return Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    header(),
+                    Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return RestoTile(resto: resto[index]);
+                        },
+                        itemCount: resto.length,
+                      ),
+                    ),
+                  ],
+                ),
               );
             } else {
               return const Center(child: CircularProgressIndicator());
