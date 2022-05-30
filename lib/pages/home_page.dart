@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,15 +7,10 @@ import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/theme.dart';
 import 'package:restaurant_apps/widgets/resto_tile.dart';
 
+import '../api/resto_api.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  // ignore: non_constant_identifier_names
-  Future<List<RestoModel>> ReadJsonData() async {
-    final jsondata = await rootBundle.loadString('assets/local_resto.json');
-    final list = json.decode(jsondata) as List<dynamic>;
-    return list.map((e) => RestoModel.fromJson(e)).toList();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,34 +68,40 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       backgroundColor: backgroundColor1,
       //Widget FutureBuilder untuk mengambil data dari json
-      body: FutureBuilder(
-          future: ReadJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              var resto = data.data as List<RestoModel>;
-              //ListView untuk menampilkan data dari json
-              return Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    header(),
-                    Expanded(
-                      child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return RestoTile(resto: resto[index]);
-                        },
-                        itemCount: resto.length,
-                      ),
-                    ),
-                  ],
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          header(),
+          FutureBuilder(
+            future: RestoApi().ReadJsonData(),
+            builder: (context, snapshort) {
+              if (snapshort.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshort.hasData) {
+                var resto = snapshort.data as List<RestoModel>;
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: resto.length,
+                    itemBuilder: (context, index) {
+                      return RestoTile(resto: resto[index]);
+                    },
+                  ),
+                );
+              } else if (snapshort.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshort.error}'),
+                );
+              }
+              return const Text(
+                'show data',
+                style: TextStyle(color: Colors.white),
               );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+            },
+          ),
+        ],
+      ),
     );
   }
 }

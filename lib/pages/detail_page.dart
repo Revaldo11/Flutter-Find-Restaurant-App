@@ -6,6 +6,8 @@ import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/theme.dart';
 import 'package:restaurant_apps/widgets/recomendation_tile.dart';
 
+import '../api/resto_api.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key, required this.resto}) : super(key: key);
 
@@ -134,7 +136,7 @@ class DetailPage extends StatelessWidget {
       ),
       backgroundColor: backgroundColor1,
       body: FutureBuilder(
-          future: ReadJsonData(),
+          future: RestoApi().ReadJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text("${data.error}"));
@@ -155,12 +157,6 @@ class DetailPage extends StatelessWidget {
             }
           }),
     );
-  }
-
-  Future<List<RestoModel>> ReadJsonData() async {
-    final jsondata = await rootBundle.loadString('assets/local_resto.json');
-    final list = json.decode(jsondata) as List<dynamic>;
-    return list.map((e) => RestoModel.fromJson(e)).toList();
   }
 
   items(List<RestoModel> resto) {}
