@@ -1,16 +1,31 @@
-import 'dart:convert';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:restaurant_apps/model/resto_model.dart';
-import 'package:restaurant_apps/theme.dart';
-import 'package:restaurant_apps/widgets/resto_tile.dart';
 
 import '../api/resto_api.dart';
+import '../model/resto_model.dart';
+import '../theme.dart';
+import '../widgets/resto_tile.dart';
+import '../widgets/skeleton.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late bool _isLoading;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,12 +97,18 @@ class HomePage extends StatelessWidget {
               } else if (snapshort.hasData) {
                 var resto = snapshort.data as List<RestoModel>;
                 return Expanded(
-                  child: ListView.builder(
-                    itemCount: resto.length,
-                    itemBuilder: (context, index) {
-                      return RestoTile(resto: resto[index]);
-                    },
-                  ),
+                  child: _isLoading
+                      ? ListView.builder(itemBuilder: (context, index) {
+                          return const NewSkeleton();
+                        })
+                      : ListView.builder(
+                          itemCount: resto.length,
+                          itemBuilder: (context, index) {
+                            return RestoTile(
+                              resto: resto[index],
+                            );
+                          },
+                        ),
                 );
               } else if (snapshort.hasError) {
                 return Center(

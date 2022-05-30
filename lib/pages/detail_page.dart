@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/theme.dart';
 import 'package:restaurant_apps/widgets/recomendation_tile.dart';
@@ -137,27 +134,37 @@ class DetailPage extends StatelessWidget {
       backgroundColor: backgroundColor1,
       body: FutureBuilder(
           future: RestoApi().ReadJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
+          builder: (context, snapshort) {
+            if (snapshort.connectionState == ConnectionState.waiting) {
+              return Container(
+                width: double.infinity,
+                height: 500,
                 child: Column(
-                  children: [
-                    hero(),
-                    tittleRestaurant(),
-                    description(),
-                    recomendation(),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(),
                   ],
                 ),
               );
-            } else {
-              return Center(child: CircularProgressIndicator());
+            } else if (snapshort.hasData) {
+              return ListView(
+                children: [
+                  hero(),
+                  tittleRestaurant(),
+                  description(),
+                  recomendation(),
+                ],
+              );
+            } else if (snapshort.hasError) {
+              return Center(
+                child: Text('Error: ${snapshort.error}'),
+              );
             }
+            return const Text(
+              'Something went wrong!!!',
+              style: TextStyle(color: Colors.white),
+            );
           }),
     );
   }
-
-  items(List<RestoModel> resto) {}
 }

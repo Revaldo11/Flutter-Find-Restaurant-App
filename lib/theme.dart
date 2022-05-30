@@ -24,3 +24,4 @@ TextStyle greyTextStyle = TextStyle(
 );
 
 double defautMargin = 30;
+double defaultPadding = 16.0;
