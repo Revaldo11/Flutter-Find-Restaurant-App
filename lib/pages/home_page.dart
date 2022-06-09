@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           header(),
           FutureBuilder(
-            future: RestoApi().ReadJsonData(),
+            future: RestoApi.getResto(),
             builder: (context, snapshort) {
               if (snapshort.connectionState == ConnectionState.waiting) {
                 return const Center(
