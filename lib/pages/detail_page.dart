@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/theme.dart';
-import 'package:restaurant_apps/widgets/recomendation_tile.dart';
-
+import 'package:restaurant_apps/widgets/menu_tile.dart';
 import '../api/resto_api.dart';
 
 class DetailPage extends StatelessWidget {
@@ -100,24 +99,35 @@ class DetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Recomendation',
+              'Menu',
               style: primaryTextStyle.copyWith(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(height: 15),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  RecomendationTile(
-                    resto: resto,
-                  ),
-                  RecomendationTile(
-                    resto: resto,
-                  ),
-                ],
+            Container(
+              width: double.infinity,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        print('Tapped');
+                      },
+                      child: const MenuTile(
+                          text: "Drinks", image: "assets/foods_bg.jpg"),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        print('Tapped');
+                      },
+                      child: const MenuTile(
+                          text: "Foods", image: "assets/drinks_bg.jpg"),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
