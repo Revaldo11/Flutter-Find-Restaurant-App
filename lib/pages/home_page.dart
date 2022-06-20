@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../api/resto_api.dart';
-import '../model/resto_model.dart';
+import '../data/api/resto_api.dart';
+import '../data/model/resto_model.dart';
 import '../theme.dart';
 import '../widgets/resto_tile.dart';
 import '../widgets/skeleton.dart';

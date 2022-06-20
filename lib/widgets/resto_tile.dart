@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/pages/detail_page.dart';
 import 'package:restaurant_apps/theme.dart';
+
+import '../data/model/resto_model.dart';
 
 class RestoTile extends StatelessWidget {
   const RestoTile({

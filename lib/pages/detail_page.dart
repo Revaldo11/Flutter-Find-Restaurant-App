@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_apps/model/resto_model.dart';
 import 'package:restaurant_apps/theme.dart';
 import 'package:restaurant_apps/widgets/menu_tile.dart';
-import '../api/resto_api.dart';
+import '../data/api/resto_api.dart';
+import '../data/model/resto_model.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key, required this.resto}) : super(key: key);
