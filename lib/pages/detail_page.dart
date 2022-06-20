@@ -143,7 +143,7 @@ class DetailPage extends StatelessWidget {
       ),
       backgroundColor: backgroundColor1,
       body: FutureBuilder(
-          future: RestoApi.getResto(),
+          future: RestoApi.getResto(resto.id),
           builder: (context, snapshort) {
             if (snapshort.connectionState == ConnectionState.waiting) {
               return Container(
