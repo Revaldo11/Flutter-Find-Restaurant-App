@@ -114,14 +114,14 @@ class DetailPage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print('Tapped');
+                        Navigator.pushNamed(context, '/drinks-page');
                       },
                       child: const MenuTile(
                           text: "Drinks", image: "assets/foods_bg.jpg"),
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('Tapped');
+                        Navigator.pushNamed(context, '/foods-page');
                       },
                       child: const MenuTile(
                           text: "Foods", image: "assets/drinks_bg.jpg"),

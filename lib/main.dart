@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_apps/pages/custom_spalsh.dart';
+import 'package:restaurant_apps/pages/drinks.dart';
+import 'package:restaurant_apps/pages/foods.dart';
 import 'package:restaurant_apps/pages/home_page.dart';
 import 'package:restaurant_apps/pages/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MyCustomSpalsh(),
         '/main': (context) => const MainScreen(),
         '/home': (context) => const HomePage(),
+        '/drinks-page': (context) => const DrinkPage(),
+        '/foods-page': (context) => const FoodsPage()
       },
     );
   }
