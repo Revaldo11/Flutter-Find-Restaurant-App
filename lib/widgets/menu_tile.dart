@@ -28,9 +28,8 @@ class MenuTile extends StatelessWidget {
             begin: Alignment.center,
             // stops: [0.3, 0.9],
             colors: [
-              Colors.black.withOpacity(.2),
-              Colors.black.withOpacity(.2),
-              // Colors.black.withOpacity(.5),
+              Colors.black.withOpacity(.6),
+              Colors.black.withOpacity(.6),
             ],
           ),
         ),

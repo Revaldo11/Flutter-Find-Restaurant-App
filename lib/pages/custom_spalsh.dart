@@ -37,7 +37,7 @@ class _MyCustomSpalshState extends State<MyCustomSpalsh> {
             OpenContainer(
               closedBuilder: (_, openContainer) {
                 return Container(
-                    color: Colors.deepPurpleAccent,
+                    color: Color.fromARGB(255, 36, 34, 45),
                     height: 80,
                     width: 80,
                     child: Center(
@@ -150,11 +150,11 @@ class _SecondClassState extends State<SecondClass>
           Center(
             child: AnimatedOpacity(
               curve: Curves.fastLinearToSlowEaseIn,
-              duration: Duration(seconds: 6),
+              duration: const Duration(seconds: 6),
               opacity: _opacity,
               child: AnimatedContainer(
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: Duration(seconds: 2),
+                duration: const Duration(seconds: 2),
                 height: _value ? 50 : 200,
                 width: _value ? 50 : 200,
                 decoration: BoxDecoration(
