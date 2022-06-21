@@ -14,8 +14,9 @@ This project is a starting point for a Flutter application.
 - Run it
 ```
 
-## Preview
-The result is:
+## ScreenShot
+
+<img src="doc/img/one.png" height="500em" /><img src="doc/img/two.png" height="500em" /><img src="doc/img/three.png" height="500em" />
 
 ###### V1
 ![App preview](doc/gif1.gif)
