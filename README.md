@@ -15,9 +15,6 @@ This project is a starting point for a Flutter application.
 ```
 
 ## Preview
-
-The app is based on Rudi's design:
-
 The result is:
 
 ###### V1
