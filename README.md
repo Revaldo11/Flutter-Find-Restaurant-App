@@ -5,7 +5,7 @@ class Revaldo extends Flutterchallenge {
     return {
       "title": "Flutter Find Your Restaurant Application",
       "description": "How to build an app using API and listview builder",
-      "URL": "https://revaldo-356ae-default-rtdb.asia-southeast1.firebasedatabase.app/.json"
+      "API": "https://revaldo-356ae-default-rtdb.asia-southeast1.firebasedatabase.app/.json"
       "day": 3,
     }
 }
@@ -17,8 +17,8 @@ class Revaldo extends Flutterchallenge {
 
 ```shell
 - Clone the repo
-- Install the dependicies
-- Run it
+- flutter pub get
+- flutter run
 ```
 
 ## ScreenShot
