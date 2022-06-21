@@ -23,7 +23,6 @@ The result is:
 ###### V1
 ![App preview](doc/gif1.gif)
 
-###### V2
-Fitur Search
+###### V1.1 Fitur Search
 ![App preview](doc/gif2.gif)
 
