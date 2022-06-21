@@ -24,5 +24,6 @@ The result is:
 ![App preview](doc/gif1.gif)
 
 ###### V2
+Fitur Search
 ![App preview](doc/gif2.gif)
 
