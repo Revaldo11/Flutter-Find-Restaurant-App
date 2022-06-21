@@ -1,4 +1,4 @@
-# restaurant_apps
+# Find Your Restaurant Application
 
 A new Flutter project.
 
