@@ -6,7 +6,6 @@ class Revaldo extends Flutterchallenge {
       "title": "Flutter Find Your Restaurant Application",
       "description": "How to build an app using API and listview builder",
       "API": "https://revaldo-356ae-default-rtdb.asia-southeast1.firebasedatabase.app/.json"
-      "day": 3,
     }
 }
 ```
