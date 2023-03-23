@@ -1,7 +1,7 @@
 # Find Your Restaurant Application
 
 ```dart
-class Revaldo extends Flutterchallenge {
+class Revaldo extends FlutterChallenge {
     return {
       "title": "Flutter Find Your Restaurant Application",
       "description": "How to build an app using API and listview builder",
